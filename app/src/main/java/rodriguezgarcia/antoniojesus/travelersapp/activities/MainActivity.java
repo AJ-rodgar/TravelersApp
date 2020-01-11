@@ -1,8 +1,10 @@
-package rodriguezgarcia.antoniojesus.travelersapp;
+package rodriguezgarcia.antoniojesus.travelersapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import rodriguezgarcia.antoniojesus.travelersapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
