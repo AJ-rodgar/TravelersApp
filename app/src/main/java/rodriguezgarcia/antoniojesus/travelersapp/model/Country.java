@@ -1,16 +1,33 @@
 package rodriguezgarcia.antoniojesus.travelersapp.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "countries")
 public class Country implements Serializable {
 
+    @PrimaryKey
     private String name;
+    private String nameES;
+    @NonNull
     private String capital;
+    @NonNull
     private String language;
+    @NonNull
     private String currency;
+    @NonNull
     private double longitude;
+    @NonNull
     private double latitude;
+    @NonNull
     private String state;
+
+    public Country() {
+
+    }
 
     public Country (String name, String capital, String language, String currency, double longitude, double latitude) {
         this.name = name;
@@ -19,6 +36,7 @@ public class Country implements Serializable {
         this.currency = currency;
         this.longitude = longitude;
         this.latitude = latitude;
+        state = "Not Visited";
     }
 
     public Country (String name, String capital, String language, String currency, double longitude, double latitude, String state) {
