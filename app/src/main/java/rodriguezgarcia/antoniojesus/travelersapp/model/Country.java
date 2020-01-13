@@ -12,25 +12,23 @@ public class Country implements Serializable {
     @PrimaryKey
     private String name;
     private String nameES;
-    @NonNull
+    private String region;
     private String capital;
-    @NonNull
     private String language;
-    @NonNull
     private String currency;
-    @NonNull
     private double longitude;
-    @NonNull
     private double latitude;
     @NonNull
     private String state;
+    private int image;
 
     public Country() {
 
     }
 
-    public Country (String name, String capital, String language, String currency, double longitude, double latitude) {
+    public Country (String name, String nameES, String capital, String language, String currency, double longitude, double latitude) {
         this.name = name;
+        this.nameES = nameES;
         this.capital = capital;
         this.language = language;
         this.currency = currency;
@@ -39,8 +37,9 @@ public class Country implements Serializable {
         state = "Not Visited";
     }
 
-    public Country (String name, String capital, String language, String currency, double longitude, double latitude, String state) {
+    public Country (String name, String nameES, String capital, String language, String currency, double longitude, double latitude, String state) {
         this.name = name;
+        this.nameES = nameES;
         this.capital = capital;
         this.language = language;
         this.currency = currency;
@@ -103,5 +102,21 @@ public class Country implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getNameES() {
+        return nameES;
+    }
+
+    public void setNameES(String nameES) {
+        this.nameES = nameES;
+    }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
     }
 }

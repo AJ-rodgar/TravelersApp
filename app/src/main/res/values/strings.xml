@@ -5,7 +5,7 @@
     <string name="pending">Pending</string>
     <string name="notvisited">Not Visited</string>
     <string name="countryname">Name:</string>
-    <string name="capitol">Capitol:</string>
+    <string name="capital">Capital:</string>
     <string name="language">Language:</string>
     <string name="currency">Currency:</string>
 </resources>

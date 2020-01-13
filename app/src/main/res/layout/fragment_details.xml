@@ -73,7 +73,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/countryCapitol"
+        android:id="@+id/countryCapital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
@@ -81,16 +81,16 @@
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textview_capitol"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textview_capital"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textview_capitol"
+        android:id="@+id/textview_capital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="48dp"
-        android:text="@string/capitol"
+        android:text="@string/capital"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_name" />
@@ -116,7 +116,7 @@
         android:text="@string/language"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_capitol" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_capital" />
 
     <TextView
         android:id="@+id/textview_currency"
@@ -134,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:text="Spanish"
+        android:text="es"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
         android:textStyle="bold"
