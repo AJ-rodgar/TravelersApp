@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TravelersApp</string>
+    <string name="gotomap">Ver en el mapa</string>
+    <string name="visited">Visitado</string>
+    <string name="pending">Pendiente</string>
+    <string name="notvisited">No Visitado</string>
+    <string name="countryname">Nombre:</string>
+    <string name="capitol">Capital:</string>
+    <string name="language">Idioma:</string>
+    <string name="currency">Moneda:</string>
 </resources>

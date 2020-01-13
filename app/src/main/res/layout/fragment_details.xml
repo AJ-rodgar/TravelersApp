@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageview_flag"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginStart="32dp"
@@ -19,16 +19,16 @@
         app:srcCompat="@drawable/spain" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btn_map"
         android:layout_width="0dp"
         android:layout_height="41dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:text="Ir al mapa"
+        android:text="@string/gotomap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageview_flag" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -39,120 +39,128 @@
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9">
+        app:layout_constraintTop_toBottomOf="@+id/btn_map">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textview_visited"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="Visitado"
+            android:text="@string/visited"
             android:textAlignment="center"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/textview_pending"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="Pendiente"
+            android:text="@string/pending"
             android:textAlignment="center"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/textview_notVisited"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="8dp"
-            android:text="No Visitado"
+            android:text="@string/notvisited"
             android:textAlignment="center"
             android:textSize="24sp" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/countryCapitol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:text="TextView"
+        android:text="Madrid"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView15"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textview_capitol"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textview_capitol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="48dp"
-        android:text="TextView"
-        android:textSize="30sp"
+        android:text="@string/capitol"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_name" />
+
+    <TextView
+        android:id="@+id/countryCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="EUR"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textview_currency"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/language"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_capitol" />
+
+    <TextView
+        android:id="@+id/textview_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/currency"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_language" />
+
+    <TextView
+        android:id="@+id/countryLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Spanish"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textview_language"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/countryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Spain"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textview_name"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/countryname"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">TravelersApp</string>
+    <string name="gotomap">Show in Map</string>
+    <string name="visited">Visited</string>
+    <string name="pending">Pending</string>
+    <string name="notvisited">Not Visited</string>
+    <string name="countryname">Name:</string>
+    <string name="capitol">Capitol:</string>
+    <string name="language">Language:</string>
+    <string name="currency">Currency:</string>
 </resources>
