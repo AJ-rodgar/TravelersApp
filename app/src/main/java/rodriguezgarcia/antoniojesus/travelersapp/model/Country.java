@@ -11,7 +11,6 @@ public class Country implements Serializable {
 
     @PrimaryKey
     private String name;
-    private String nameES;
     private String region;
     private String capital;
     private String language;
@@ -20,32 +19,34 @@ public class Country implements Serializable {
     private double latitude;
     @NonNull
     private String state;
-    private int image;
+    private String imageURL;
 
     public Country() {
 
     }
 
-    public Country (String name, String nameES, String capital, String language, String currency, double longitude, double latitude) {
+    public Country (String name, String region, String capital, String language, String currency, double longitude, double latitude, String imageURL) {
         this.name = name;
-        this.nameES = nameES;
+        this.region = region;
         this.capital = capital;
         this.language = language;
         this.currency = currency;
         this.longitude = longitude;
         this.latitude = latitude;
         state = "Not Visited";
+        this.imageURL = imageURL;
     }
 
-    public Country (String name, String nameES, String capital, String language, String currency, double longitude, double latitude, String state) {
+    public Country (String name, String region, String capital, String language, String currency, double longitude, double latitude, String state, String imageURL) {
         this.name = name;
-        this.nameES = nameES;
+        this.region = region;
         this.capital = capital;
         this.language = language;
         this.currency = currency;
         this.longitude = longitude;
         this.latitude = latitude;
         this.state = state;
+        this.imageURL = imageURL;
     }
 
     public String getName() {
@@ -104,19 +105,19 @@ public class Country implements Serializable {
         this.state = state;
     }
 
-    public String getNameES() {
-        return nameES;
+    public String getImage() {
+        return imageURL;
     }
 
-    public void setNameES(String nameES) {
-        this.nameES = nameES;
+    public void setImage(String image) {
+        this.imageURL = image;
     }
 
-    public int getImage() {
-        return image;
+    public String getRegion() {
+        return region;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setRegion(String region) {
+        this.region = region;
     }
 }
