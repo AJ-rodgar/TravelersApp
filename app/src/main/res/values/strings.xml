@@ -8,4 +8,5 @@
     <string name="capital">Capital:</string>
     <string name="language">Language:</string>
     <string name="currency">Currency:</string>
+    <string name="title_activity_maps">Maps</string>
 </resources>

@@ -7,7 +7,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_lista"
+        android:id="@+id/recyclerview_lista"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"

@@ -44,17 +44,23 @@ public class QueryUtils {
                 String region = currentCountry.getString("region");
                 String flag = currentCountry.getString("flag");
 
-                JSONObject currencies = currentCountry.getJSONObject("currencies");
-                String currency = currencies.getString("name");
+                JSONArray currencies = currentCountry.getJSONArray("currencies");
+                JSONObject currencyObject = currencies.getJSONObject(0);
+                String currency = currencyObject.getString("name");
 
-                JSONObject languages = currentCountry.getJSONObject("languages");
-                String language = languages.getString("name");
+                JSONArray languages = currentCountry.getJSONArray("languages");
+                JSONObject languageObject = languages.getJSONObject(0);
+                String language = languageObject.getString("name");
 
-                JSONArray latlng = currentCountry.getJSONArray("latlng");
-                double latitude = latlng.getDouble(0);
-                double longitude = latlng.getDouble(1);
+                double latitude = 0;
+                double longitude = 0;
+                /*JSONArray latlng = currentCountry.getJSONArray("latlng");
+                latitude = latlng.getDouble(0);
+                longitude = latlng.getDouble(1);*/
+
 
                 Country country = new Country(name,region,capital,language, currency, longitude, latitude, flag);
+                countries.add(country);
             }
 
         } catch (JSONException e) {
@@ -106,7 +112,7 @@ public class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
+            //urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(15000);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

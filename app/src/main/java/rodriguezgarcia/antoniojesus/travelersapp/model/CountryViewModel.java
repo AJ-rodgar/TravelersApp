@@ -1,6 +1,7 @@
 package rodriguezgarcia.antoniojesus.travelersapp.model;
 
 import android.app.Application;
+import android.content.Context;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
@@ -34,7 +35,6 @@ public class CountryViewModel extends AndroidViewModel {
         if (countries == null) {
             countries = new MutableLiveData<>();
             loadCountries();
-
         }
 
         return countries;
