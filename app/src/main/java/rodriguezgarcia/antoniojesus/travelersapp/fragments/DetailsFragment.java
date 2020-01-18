@@ -54,6 +54,9 @@ public class DetailsFragment extends Fragment {
 
     public void setData(Country country){
 
+        if (country.getFlag() != 0) {
+            flag.setImageResource(country.getFlag());
+        }
         name.setText(country.getName());
         capital.setText(country.getCapital());
         language.setText(country.getLanguage());
