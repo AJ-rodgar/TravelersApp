@@ -1,24 +1,36 @@
 package rodriguezgarcia.antoniojesus.travelersapp.data;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import rodriguezgarcia.antoniojesus.travelersapp.model.Country;
+import java.util.List;
 
 @Dao
 public interface CountryDAO {
 
     @Insert
-    public String insertCountry(Country country);
+    public long insertCountry(Country country);
 
     @Update
     public int updateCountry(Country country);
 
-    @Query("SELECT name FROM countries WHERE name = :state")
-    public String getCountry(String state);
+    @Delete
+    public int deleteCountry(Country country);
+
+    @Query("SELECT * FROM countries WHERE name = :name")
+    public Country getCountry(String name);
+
+    @Query("SELECT * FROM COUNTRIES")
+    public List<Country> getCountries();
+
+    @Query("SELECT name FROM countries WHERE state = :state")
+    public List<String> getCountriesByState(int state);
+
+    @Query("SELECT state FROM countries WHERE name = :name")
+    public int getState(String name);
 
 
 }

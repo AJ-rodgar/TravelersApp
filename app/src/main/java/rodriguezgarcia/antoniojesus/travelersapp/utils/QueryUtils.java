@@ -21,9 +21,12 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import rodriguezgarcia.antoniojesus.travelersapp.R;
-import rodriguezgarcia.antoniojesus.travelersapp.model.Country;
+import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
+import rodriguezgarcia.antoniojesus.travelersapp.model.CountryViewModel;
 
 public class QueryUtils {
+
+    private static CountryViewModel model;
 
     private static final String LOG_TAG = "QUERY UTILS";
 
@@ -36,7 +39,6 @@ public class QueryUtils {
 
         Map<String, Integer> codeToFlag = new TreeMap<>();
         codeToFlag = loadCodes();
-
 
         try {
 
@@ -60,9 +62,16 @@ public class QueryUtils {
 
                 double latitude = 0;
                 double longitude = 0;
-                /*JSONArray latlng = currentCountry.getJSONArray("latlng");
-                latitude = latlng.getDouble(0);
-                longitude = latlng.getDouble(1);*/
+
+                JSONArray latlng = currentCountry.getJSONArray("latlng");
+                if (latlng.length() != 0) {
+                    latitude = latlng.getDouble(0);
+                    longitude = latlng.getDouble(1);
+                } else {
+                    latitude = 19.2823181;
+                    longitude = 166.647049;
+                }
+
 
                 int flag = 0;
 
@@ -70,7 +79,9 @@ public class QueryUtils {
                     flag = codeToFlag.get(code);
                 }
 
-                Country country = new Country(name,region,capital,language, currency, longitude, latitude, flag);
+                int state = -1;
+
+                Country country = new Country(name,region,capital,language, currency, longitude, latitude, state, flag);
                 countries.add(country);
             }
 

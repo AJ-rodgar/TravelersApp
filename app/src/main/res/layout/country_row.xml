@@ -23,20 +23,28 @@
             android:padding="8dp"
             android:text="Europa"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/country"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.8"
+            android:layout_weight="0.6"
             android:autoText="false"
             android:padding="8dp"
             android:paddingLeft="8dp"
             android:text="España"
             android:textAlignment="textStart"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:autoSizeTextType="none" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:text="V" />
 
     </LinearLayout>
 

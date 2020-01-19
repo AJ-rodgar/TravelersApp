@@ -1,9 +1,6 @@
 package rodriguezgarcia.antoniojesus.travelersapp.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +15,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import rodriguezgarcia.antoniojesus.travelersapp.R;
-import rodriguezgarcia.antoniojesus.travelersapp.fragments.ListFragment;
-import rodriguezgarcia.antoniojesus.travelersapp.model.Country;
+import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder> {
 
@@ -50,6 +46,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         colorsByRegion.put("Americas", "#E5BE01");
         colorsByRegion.put("Africa", "#008F39");
         colorsByRegion.put("Oceania", "#3B83BD");
+        colorsByRegion.put("Polar", "#012E67");
         colorsByRegion.put("", "#012E67");
 
         final Country country = countries.get(position);

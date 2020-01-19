@@ -1,4 +1,4 @@
-package rodriguezgarcia.antoniojesus.travelersapp.model;
+package rodriguezgarcia.antoniojesus.travelersapp.data;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -9,7 +9,9 @@ import java.io.Serializable;
 @Entity(tableName = "countries")
 public class Country implements Serializable {
 
-    @PrimaryKey
+    @PrimaryKey (autoGenerate = true)
+    private long id;
+    @NonNull
     private String name;
     private String region;
     private String capital;
@@ -18,26 +20,14 @@ public class Country implements Serializable {
     private double longitude;
     private double latitude;
     @NonNull
-    private String state;
+    private int state;
     private int imageID;
 
     public Country() {
 
     }
 
-    public Country (String name, String region, String capital, String language, String currency, double longitude, double latitude, int imageID) {
-        this.name = name;
-        this.region = region;
-        this.capital = capital;
-        this.language = language;
-        this.currency = currency;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        state = "Not Visited";
-        this.imageID = imageID;
-    }
-
-    public Country (String name, String region, String capital, String language, String currency, double longitude, double latitude, String state, String imageURL) {
+    public Country (String name, String region, String capital, String language, String currency, double longitude, double latitude, int state, int imageID) {
         this.name = name;
         this.region = region;
         this.capital = capital;
@@ -97,19 +87,19 @@ public class Country implements Serializable {
         this.latitude = latitude;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
 
-    public int getFlag() {
+    public int getImageID() {
         return imageID;
     }
 
-    public void setFlag(int imageID) {
+    public void setImageID(int imageID) {
         this.imageID = imageID;
     }
 
@@ -119,5 +109,13 @@ public class Country implements Serializable {
 
     public void setRegion(String region) {
         this.region = region;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

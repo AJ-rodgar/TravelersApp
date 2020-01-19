@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ import java.util.List;
 import rodriguezgarcia.antoniojesus.travelersapp.R;
 import rodriguezgarcia.antoniojesus.travelersapp.activities.DetailsActivity;
 import rodriguezgarcia.antoniojesus.travelersapp.adapters.CountryAdapter;
-import rodriguezgarcia.antoniojesus.travelersapp.model.Country;
+import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
 import rodriguezgarcia.antoniojesus.travelersapp.model.CountryViewModel;
 
 public class ListFragment extends Fragment {
@@ -83,10 +82,9 @@ public class ListFragment extends Fragment {
             model.getCountries().observe(this, new Observer<List<Country>>() {
                 @Override
                 public void onChanged(List<Country> countries) {
-                    Log.d("TAG", "" + countries.size());
                     adapter.addAll(countries);
                     adapter.notifyDataSetChanged();
-
+                    //model.addCountries(countries);
                 }
             });
 

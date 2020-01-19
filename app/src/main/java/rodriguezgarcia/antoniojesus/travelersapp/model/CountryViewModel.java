@@ -1,8 +1,8 @@
 package rodriguezgarcia.antoniojesus.travelersapp.model;
 
 import android.app.Application;
-import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -18,17 +18,22 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.List;
 
+import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
+import rodriguezgarcia.antoniojesus.travelersapp.data.DataBaseRoom;
 import rodriguezgarcia.antoniojesus.travelersapp.utils.QueryUtils;
 
 public class CountryViewModel extends AndroidViewModel {
 
+    private static String API_REQUEST_URL = "https://restcountries.eu/rest/v2/all";
+
     private Application application;
     private MutableLiveData<List<Country>> countries;
-    private static String API_REQUEST_URL = "https://restcountries.eu/rest/v2/all";
+    private DataBaseRoom db;
 
     public CountryViewModel(@NonNull Application application) {
         super(application);
         this.application = application;
+        db = DataBaseRoom.getInstance(application);
     }
 
     public LiveData<List<Country>> getCountries() {
@@ -61,5 +66,70 @@ public class CountryViewModel extends AndroidViewModel {
         requestQueue.add(stringRequest);
     }
 
+    private List<String> getCountriesByState(int state){
+        return db.countryDAO().getCountriesByState(state);
+    }
 
+    public int getCountryState(String name) {
+        return db.countryDAO().getState(name);
+    }
+
+    public void addCountry(Country country) {
+        new AsyncAddCountryDB().execute(country);
+    }
+
+    public void addCountries(List<Country> countries) {
+        new AsyncAddCountriesDB().execute(countries);
+    }
+
+    public void updateCountry(Country country) {
+        new AsyncEditCountryDB().execute(country);
+    }
+
+    private class AsyncAddCountryDB extends AsyncTask<Country, Void, Long> {
+
+        Country country;
+
+        @Override
+        protected Long doInBackground(Country... countries) {
+
+            long id = -1;
+
+            if (countries.length != 0) {
+                country = countries[0];
+                if (!db.countryDAO().getCountries().contains(country)){
+                    db.countryDAO().insertCountry(countries[0]);
+                }
+            }
+
+            return id;
+        }
+    }
+
+    private class AsyncEditCountryDB extends AsyncTask<Country, Void, Integer> {
+
+        @Override
+        protected Integer doInBackground(Country... countries) {
+            int updaterows = 0;
+
+            if (countries.length != 0) {
+                updaterows = db.countryDAO().updateCountry(countries[0]);
+            }
+
+            return updaterows;
+        }
+    }
+
+    private class AsyncAddCountriesDB extends AsyncTask<List<Country>, Void, Long> {
+
+        @Override
+        protected Long doInBackground(List<Country>... lists) {
+
+            List<Country> list = lists[0];
+            for (Country country : list) {
+                new AsyncAddCountryDB().execute(country);
+            }
+            return null;
+        }
+    }
 }
