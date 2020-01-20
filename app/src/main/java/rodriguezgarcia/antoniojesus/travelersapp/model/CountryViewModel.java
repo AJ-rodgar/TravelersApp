@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,6 +30,7 @@ public class CountryViewModel extends AndroidViewModel {
     private Application application;
     private MutableLiveData<List<Country>> countries;
     private DataBaseRoom db;
+    private List<Country> lista;
 
     public CountryViewModel(@NonNull Application application) {
         super(application);

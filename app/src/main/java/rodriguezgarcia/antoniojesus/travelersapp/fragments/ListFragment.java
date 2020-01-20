@@ -84,7 +84,7 @@ public class ListFragment extends Fragment {
                 public void onChanged(List<Country> countries) {
                     adapter.addAll(countries);
                     adapter.notifyDataSetChanged();
-                    //model.addCountries(countries);
+                    model.addCountries(countries);
                 }
             });
 
