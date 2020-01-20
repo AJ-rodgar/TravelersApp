@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
@@ -77,7 +78,7 @@ public class CountryViewModel extends AndroidViewModel {
     }
 
     public void addCountry(Country country) {
-        new AsyncAddCountryDB().execute(country);
+        //new AsyncAddCountryDB().execute(country);
     }
 
     public void addCountries(List<Country> countries) {
@@ -88,7 +89,7 @@ public class CountryViewModel extends AndroidViewModel {
         new AsyncEditCountryDB().execute(country);
     }
 
-    private class AsyncAddCountryDB extends AsyncTask<Country, Void, Long> {
+    /*private class AsyncAddCountryDB extends AsyncTask<Country, Void, Long> {
 
         Country country;
 
@@ -106,7 +107,7 @@ public class CountryViewModel extends AndroidViewModel {
 
             return id;
         }
-    }
+    }*/
 
     private class AsyncEditCountryDB extends AsyncTask<Country, Void, Integer> {
 
@@ -122,16 +123,26 @@ public class CountryViewModel extends AndroidViewModel {
         }
     }
 
-    private class AsyncAddCountriesDB extends AsyncTask<List<Country>, Void, Long> {
+    private class AsyncAddCountriesDB extends AsyncTask<List<Country>, Void, List<Country>> {
 
         @Override
-        protected Long doInBackground(List<Country>... lists) {
+        protected List<Country> doInBackground(List<Country>... lists) {
 
+            List<Country> added = new ArrayList<>();
             List<Country> list = lists[0];
             for (Country country : list) {
-                new AsyncAddCountryDB().execute(country);
+                long id = db.countryDAO().insertCountry(country);
+                country.setId(id);
+                added.add(country);
             }
-            return null;
+            return added;
+        }
+
+        @Override
+        protected void onPostExecute(List<Country> added) {
+            super.onPostExecute(added);
+
+            countries.postValue(added);
         }
     }
 }

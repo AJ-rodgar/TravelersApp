@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +15,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import rodriguezgarcia.antoniojesus.travelersapp.R;
 import rodriguezgarcia.antoniojesus.travelersapp.activities.MapsActivity;
 import rodriguezgarcia.antoniojesus.travelersapp.data.DataBaseRoom;
 import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
+import rodriguezgarcia.antoniojesus.travelersapp.model.CountryViewModel;
 
 public class DetailsFragment extends Fragment {
 
@@ -36,8 +37,7 @@ public class DetailsFragment extends Fragment {
     private TextView notVisited;
 
     private DataBaseRoom db;
-
-    private static Country countryDB;
+    private CountryViewModel model;
 
     public DetailsFragment() {
 
@@ -61,6 +61,7 @@ public class DetailsFragment extends Fragment {
         notVisited = view.findViewById(R.id.textview_notVisited);
 
         db = DataBaseRoom.getInstance(getContext());
+        model = ViewModelProviders.of(this).get(CountryViewModel.class);
 
         return view;
     }
@@ -70,10 +71,11 @@ public class DetailsFragment extends Fragment {
         super.onAttach(context);
     }
 
-    public void setData(final Country country){
+    public void getCountryData(Country country) {
+        new AsyncGetCountryDB().execute(country);
+    }
 
-        countryDB = country;
-        new AsyncGetCountryDB().execute(countryDB);
+    public void setData(final Country country){
 
         if (country.getImageID() != 0) {
             flag.setImageResource(country.getImageID());
@@ -100,22 +102,25 @@ public class DetailsFragment extends Fragment {
             public void onClick(View view) {
                 country.setState(1);
                 notifyChangeState(country);
+                model.updateCountry(country);
             }
         });
 
         pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                countryDB.setState(0);
-                notifyChangeState(countryDB);
+                country.setState(0);
+                notifyChangeState(country);
+                model.updateCountry(country);
             }
         });
 
         notVisited.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                countryDB.setState(-1);
-                notifyChangeState(countryDB);
+                country.setState(-1);
+                notifyChangeState(country);
+                model.updateCountry(country);
             }
         });
 
@@ -137,21 +142,26 @@ public class DetailsFragment extends Fragment {
         }
     }
 
-    private class AsyncGetCountryDB extends AsyncTask<Country, Void, Long> {
+    private class AsyncGetCountryDB extends AsyncTask<Country, Void, Country> {
 
         Country country;
 
         @Override
-        protected Long doInBackground(Country... countries) {
-
-            long id = -1;
+        protected Country doInBackground(Country... countries) {
 
             if (countries.length != 0) {
                 country = countries[0];
-                countryDB.setState(country.getState());
+                country = db.countryDAO().getCountry(country.getName());
             }
 
-            return id;
+            return country;
+        }
+
+        @Override
+        protected void onPostExecute(Country country) {
+            super.onPostExecute(country);
+
+            setData(country);
         }
     }
 

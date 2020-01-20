@@ -38,14 +38,6 @@
             android:textSize="14sp"
             app:autoSizeTextType="none" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.1"
-            android:gravity="center"
-            android:text="V" />
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
