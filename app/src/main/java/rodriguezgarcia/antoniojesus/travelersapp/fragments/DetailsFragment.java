@@ -100,8 +100,6 @@ public class DetailsFragment extends Fragment {
             public void onClick(View view) {
                 country.setState(1);
                 notifyChangeState(country);
-                Log.d("PATATA", "doInBackground: " + country.getState());
-                new AsyncEditCountryDB().execute(country);
             }
         });
 

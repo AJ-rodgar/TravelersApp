@@ -9,4 +9,7 @@
     <string name="language">Language:</string>
     <string name="currency">Currency:</string>
     <string name="title_activity_maps">Maps</string>
+    <string name="seeCountryDetails">See details</string>
+    <string name="setAs">setAs</string>
+    <string name="save">save</string>
 </resources>

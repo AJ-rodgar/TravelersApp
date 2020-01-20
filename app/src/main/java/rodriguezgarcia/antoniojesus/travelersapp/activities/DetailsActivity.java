@@ -31,7 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         DetailsFragment detailsFragment = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_details);
 
-        detailsFragment.setData(model, country);
+        detailsFragment.setData(country);
 
     }
 }
