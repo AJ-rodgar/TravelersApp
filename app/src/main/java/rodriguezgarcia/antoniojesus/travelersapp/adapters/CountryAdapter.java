@@ -1,6 +1,7 @@
 package rodriguezgarcia.antoniojesus.travelersapp.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,19 +41,21 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,final int position) {
 
+        //Cada region tendrá su propio color de fondo cuando se muestre en la lista
         Map<String, String> colorsByRegion = new TreeMap<String,String>();
-        colorsByRegion.put("Europe", "#FF0000");
-        colorsByRegion.put("Asia", "#FF8000");
-        colorsByRegion.put("Americas", "#E5BE01");
-        colorsByRegion.put("Africa", "#008F39");
-        colorsByRegion.put("Oceania", "#3B83BD");
-        colorsByRegion.put("Polar", "#012E67");
-        colorsByRegion.put("", "#012E67");
+        colorsByRegion.put("Europe", "#98ee99");
+        colorsByRegion.put("Asia", "#ffff8b");
+        colorsByRegion.put("Americas", "#ff6659");
+        colorsByRegion.put("Africa", "#ffc947");
+        colorsByRegion.put("Oceania", "#ff94c2");
+        colorsByRegion.put("Polar", "#4f83cc");
+        colorsByRegion.put("", "#4f83cc");
 
         final Country country = countries.get(position);
 
         holder.region.setText(country.getRegion());
         holder.name.setText(country.getName());
+        holder.region.setBackgroundColor(Color.parseColor(colorsByRegion.get(country.getRegion())));
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener(){
             @Override

@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -31,7 +30,6 @@ public class CountryViewModel extends AndroidViewModel {
     private Application application;
     private MutableLiveData<List<Country>> countries;
     private DataBaseRoom db;
-    private List<Country> lista;
 
     public CountryViewModel(@NonNull Application application) {
         super(application);
@@ -69,18 +67,6 @@ public class CountryViewModel extends AndroidViewModel {
         requestQueue.add(stringRequest);
     }
 
-    private List<String> getCountriesByState(int state){
-        return db.countryDAO().getCountriesByState(state);
-    }
-
-    public int getCountryState(String name) {
-        return db.countryDAO().getState(name);
-    }
-
-    public void addCountry(Country country) {
-        //new AsyncAddCountryDB().execute(country);
-    }
-
     public void addCountries(List<Country> countries) {
         new AsyncAddCountriesDB().execute(countries);
     }
@@ -88,26 +74,6 @@ public class CountryViewModel extends AndroidViewModel {
     public void updateCountry(Country country) {
         new AsyncEditCountryDB().execute(country);
     }
-
-    /*private class AsyncAddCountryDB extends AsyncTask<Country, Void, Long> {
-
-        Country country;
-
-        @Override
-        protected Long doInBackground(Country... countries) {
-
-            long id = -1;
-
-            if (countries.length != 0) {
-                country = countries[0];
-                if (!db.countryDAO().getCountries().contains(country)){
-                    db.countryDAO().insertCountry(countries[0]);
-                }
-            }
-
-            return id;
-        }
-    }*/
 
     private class AsyncEditCountryDB extends AsyncTask<Country, Void, Integer> {
 

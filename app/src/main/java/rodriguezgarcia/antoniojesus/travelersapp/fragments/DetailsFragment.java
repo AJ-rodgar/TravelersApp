@@ -128,17 +128,17 @@ public class DetailsFragment extends Fragment {
 
     public void notifyChangeState(Country country){
         if (country.getState() == -1) {
-            notVisited.setBackgroundColor(Color.RED);
+            notVisited.setBackgroundColor(Color.parseColor("#ff8a65"));
             visited.setBackgroundColor(Color.WHITE);
             pending.setBackgroundColor(Color.WHITE);
         } else if (country.getState() == 1) {
             notVisited.setBackgroundColor(Color.WHITE);
-            visited.setBackgroundColor(Color.GREEN);
+            visited.setBackgroundColor(Color.parseColor("#81c784"));
             pending.setBackgroundColor(Color.WHITE);
         } else {
             notVisited.setBackgroundColor(Color.WHITE);
             visited.setBackgroundColor(Color.WHITE);
-            pending.setBackgroundColor(Color.YELLOW);
+            pending.setBackgroundColor(Color.parseColor("#fff176"));
         }
     }
 
@@ -162,20 +162,6 @@ public class DetailsFragment extends Fragment {
             super.onPostExecute(country);
 
             setData(country);
-        }
-    }
-
-    private class AsyncEditCountryDB extends AsyncTask<Country, Void, Integer> {
-
-        @Override
-        protected Integer doInBackground(Country... countries) {
-            int updaterows = 0;
-
-            if (countries.length != 0) {
-                updaterows = db.countryDAO().updateCountry(countries[0]);
-            }
-
-            return updaterows;
         }
     }
 }

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnCo
             intent.putExtra("country", country);
             startActivity(intent);
         } else {
-            //detailsFragment.setData();
+            detailsFragment.getCountryData(country);
         }
 
     }

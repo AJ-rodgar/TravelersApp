@@ -22,11 +22,8 @@ import java.util.TreeMap;
 
 import rodriguezgarcia.antoniojesus.travelersapp.R;
 import rodriguezgarcia.antoniojesus.travelersapp.data.Country;
-import rodriguezgarcia.antoniojesus.travelersapp.model.CountryViewModel;
 
 public class QueryUtils {
-
-    private static CountryViewModel model;
 
     private static final String LOG_TAG = "QUERY UTILS";
 
@@ -37,7 +34,7 @@ public class QueryUtils {
 
         List<Country> countries = new ArrayList<>();
 
-        Map<String, Integer> codeToFlag = new TreeMap<>();
+        Map<String, Integer> codeToFlag;
         codeToFlag = loadCodes();
 
         try {
@@ -64,6 +61,7 @@ public class QueryUtils {
                 double longitude = 0;
 
                 JSONArray latlng = currentCountry.getJSONArray("latlng");
+                //Hay un solo pais que no tiene latitud ni longitud, asi que he metido ese dato a mano
                 if (latlng.length() != 0) {
                     latitude = latlng.getDouble(0);
                     longitude = latlng.getDouble(1);
@@ -390,7 +388,6 @@ public class QueryUtils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            //urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(15000);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
