@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.OnCo
     public void onChange(Country country) {
 
         if (detailsFragment == null) {
-            Intent intent = new Intent(this, DetailsFragment.class);
+            Intent intent = new Intent(this, DetailsActivity.class);
             intent.putExtra("country", country);
             startActivity(intent);
         } else {

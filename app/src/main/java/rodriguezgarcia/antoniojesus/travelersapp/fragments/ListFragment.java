@@ -71,9 +71,7 @@ public class ListFragment extends Fragment {
             adapter = new CountryAdapter(context, countries, new CountryAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(Country country, int position) {
-                    Intent intent = new Intent(context, DetailsActivity.class);
-                    intent.putExtra("country", country);
-                    startActivity(intent);
+                    callback.onChange(country);
                 }
             });
 
